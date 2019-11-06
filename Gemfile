@@ -3,14 +3,15 @@ git_source(:github){|repo| "https://github.com/#{repo}.git"}
 
 ruby "2.5.5"
 
-gem "bootsnap", ">= 1.1.0", require: false
 gem "bcrypt"
+gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap-sass"
 gem "coffee-rails", "~> 4.2"
 gem "config"
+gem "kaminari"
+gem "bootstrap4-kaminari-views"
 gem "devise"
 gem "faker"
-gem "rails-i18n"
 gem "font-awesome-rails"
 gem "font-awesome-sass"
 gem "jbuilder", "~> 2.5"
@@ -18,6 +19,7 @@ gem "jquery-rails"
 gem "jquery-ui-rails"
 gem "puma", "~> 3.11"
 gem "rails", "~> 5.2.3"
+gem "rails-i18n"
 gem "rails-ujs"
 gem "sass-rails", "~> 5.0"
 gem "sqlite3"

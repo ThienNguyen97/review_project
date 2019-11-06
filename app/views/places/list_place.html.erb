@@ -1,0 +1,61 @@
+<% provide :title, t("title") %>
+<div class="site-section bg-light">
+    <div class="container">
+            <div class="list_post">
+                <% if @places.blank? %>
+                  <h1><%= t ".not_found" %></h1>
+                <% else %>
+                  <% @places.each do |place| %>
+                  <div class="d-block d-md-flex listing-horizontal">
+
+                      <a href="#" class="img d-block">
+                      <% if place.place_images.first %>
+                          <%= image_tag(place.place_images.first.link, class: "img-fluid picture") %>
+                      <% end %>
+                      </a>
+
+                      <div class="lh-content">
+                          <a href="#" class="bookmark"><span class="icon-heart"></span></a>
+                          <h3><%= link_to place.name, detail_index_path(name: place.name) %></h3>
+                          <p><%= place.address %></p>
+                      </div>
+                  </div>
+                  <% end %>
+                  <div class="box_center">
+                    <%= paginate @places, theme: "twitter-bootstrap-4" %>
+                  </div>
+                <% end %>
+            </div>
+    </div>
+</div>
+
+<div class="site-section">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7 text-center border-primary">
+        <h2 class="font-weight-light text-primary"><%= t ".popular-category" %></h2>
+      </div>
+    </div>
+
+    <div class="row align-items-stretch">
+      <div class="col-6 col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-4">
+        <%= link_to "#", class: "popular-category h-100" do %>
+          <span class="icon mb-3"><span class="flaticon-hotel"></span></span>
+          <span class="caption mb-2 d-block"><%= t ".hotels" %></span>
+        <% end %>
+      </div>
+      <div class="col-6 col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-4">
+        <%= link_to "#", class: "popular-category h-100" do %>
+          <span class="icon mb-3"><span class="flaticon-cutlery"></span></span>
+          <span class="caption mb-2 d-block"><%= t ".restaurants" %></span>
+        <% end %>
+      </div>
+      <div class="col-6 col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-4">
+        <%= link_to "#", class: "popular-category h-100" do %>
+          <span class="icon mb-3"><span class="flaticon-bike"></span></span>
+          <span class="caption mb-2 d-block"><%= t ".other" %></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
