@@ -5,18 +5,15 @@ class UsersController < ApplicationController
   before_action :correct_user, only: %i(edit update)
   before_action :admin_user, only: :destroy
 
-  def show
-  end
+  def show; end
 
-  def index
-  end
+  def index; end
 
   def new
     @user = User.new
   end
 
-  def newfeed
-  end
+  def newfeed; end
 
   def create
     @user = User.new user_params
