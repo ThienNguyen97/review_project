@@ -1,56 +1,91 @@
 <% provide :title, t("page_title.signup") %>
-<h1><%= t "page_title.signup" %></h1>
-
+<style>
+.center{
+  margin: auto;
+  width: 25%;
+}
+.field{
+  color: #2a2a2a
+}
+.field input{
+  width: 100%
+}
+.field input[type = radio]{
+  width: 5%;
+  height: 5%;
+  margin-top: 5px;
+  margin-bottom: 5px
+}
+.actions input{
+  width: 100%
+}
+.nutphu{
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px
+}
+.nutphu a{
+  color: #2a2a2a
+}
+input:hover, input:focus {
+    outline: none !important;
+}
+</style>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="center">
+    <div style="text-align: center"><h1><%= t "page_title.signup" %></h1></div>
+    <div class="row">
+      <div style="width: 100%">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="field">
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-      </div>
+          <div class="field">
+            <%= f.label :name %><br />
+            <%= f.text_field :name %>
+          </div>
 
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
 
-      <div class="field">
-        <%= f.label :birthday, class: "text-black" %>
-        <div>
-          <%= f.date_field :birthday %>
+          <div class="field">
+            <%= f.label :birthday, class: "text-black" %>
+            <div>
+              <%= f.date_field :birthday %>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="genderdiv">
+              <%= f.label :gender, class: "text-black" %>
+              <%= f.radio_button :gender, Settings.user.gender.male %><span>Male</span>
+              <%= f.radio_button :gender, Settings.user.gender.female %><span>Female</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Sign up", class: "btn btn-primary loginbtn" %>
+          </div>
+        <% end %>
+
+        <div class="nutphu">
+          <%= render "devise/shared/links" %>
         </div>
       </div>
-
-      <div class="field">
-        <%= f.label :gender, class: "text-black" %>
-        <div>
-          <%= f.radio_button :gender, Settings.user.gender.male %><span class="option"> Male<span>
-          <%= f.radio_button :gender, Settings.user.gender.female %><span class="option"> Female<span>
-        </div>
-      </div>
-
-      <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "Sign up" %>
-      </div>
-    <% end %>
-
-
-    <%= render "devise/shared/links" %>
+    </div>
   </div>
 </div>
-
