@@ -4,4 +4,6 @@ class DetailController < ApplicationController
     # @popular_places = TravelPlace.popular_places
     # @posts = Post.where(travel_place_id: @places.id)
   end
+  
+ 
 end
