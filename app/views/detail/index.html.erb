@@ -1,0 +1,47 @@
+<% provide :title, @places.name %>
+<% provide :header_partial, "shared/header_partial/title" %>
+  <div class="site-section">
+    <div class="container">
+      <div class="row detail">
+        <div class="col-sm-6">
+          <% if !@places.place_images.empty? %>
+          <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel" data-interval="false">
+            <div class="carousel-inner box_center" role="listbox">
+              <% @places.place_images.each_with_index do |img, i| %>
+                <div class="carousel-item <%= (i == 0)? 'active': '' %>">
+                  <%= image_tag(img.link, class: "img-fluid mb-4 image_detail")%>
+                </div>
+              <% end %>
+            </div>
+            <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+          </div>
+          <% end %>
+        </div>
+        <div class="col-sm-6 content border-bottom">
+          <h3><%= @places.city.name %></h3>
+          <div class="row ml-1">
+
+          </div>
+          <p class="mb-5 text_content "><%= truncate(@places.content, length: Settings.truncate_length.place_content) %></p>
+          <% if user_signed_in? %>
+            <div class="mb-3 button_bottom">
+                <div class="box_center">
+                  <%= link_to current_user do %>
+                    <span class="btn btn-primary btn-md text-white"><%= t ".review_place" %></span>
+                  <% end %>
+                </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="border-primary box_center mb-5">
+        <h2 class="text-primary text_center"><%= t ".more" %></h2>
+      </div>
+      <%= render "shared/listing_place" %>
+  </div>
+</div>
