@@ -49,14 +49,13 @@ ActiveRecord::Schema.define(version: 2019_11_06_092238) do
   end
 
   create_table "places", force: :cascade do |t|
-    t.text "name"
-    t.text "content"
+    t.text "title"
+    t.text "description"
     t.text "address"
     t.integer "type_id"
     t.integer "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["city_id"], name: "index_places_on_city_id"
   end
 
   create_table "reactions", force: :cascade do |t|
