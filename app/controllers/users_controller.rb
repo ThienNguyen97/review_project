@@ -5,7 +5,12 @@ class UsersController < ApplicationController
   before_action :correct_user, only: %i(edit update)
   before_action :admin_user, only: :destroy
 
-  def show; end
+  def show
+    @posts = @user.posts.create_desc.page(
+      params[:page]
+    ).per Settings.num_feeds_per_page
+    redirect_to(root_url) && return unless @user
+  end
 
   def index; end
 
@@ -13,7 +18,12 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def newfeed; end
+  def newfeed
+    @reivew_posts = current_user.posts.build
+    @feed_items = current_user.feed.create_desc.page(
+      params[:page]
+    ).per Settings.num_feeds_per_page
+  end
 
   def create
     @user = User.new user_params

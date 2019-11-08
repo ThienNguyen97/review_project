@@ -1,4 +1,4 @@
-<% provide(:title, @user.name) %>
+<% provide :title, t("page_title.newfeed") %>
 <% provide :header_partial, "shared/header_partial/title" %>
 
 <div class="site-section bg-light">
@@ -8,28 +8,24 @@
       <aside class="col-md-4">
         <div class="card card-profile">
           <div class="card-body">
-            <%= gravatar_for @user %>
-            <strong><%= link_to @user.name, @user %></strong>
+            <%= gravatar_for current_user %>
+            <strong><%= link_to current_user.name, current_user %></strong>
             <hr>
             <section class="stats">
               <%= render "shared/stats" %>
             </section>
             <hr>
-            <!--  render "follow_form" if user_signed_in? -->
+            <!-- follow form -->
           </div>
         </div>
       </aside>
 
       <div class="col-md-8">
-        <% if current_user == @user %>
-          <button id= "up-post-btn" type="button" class="btn btn-primary border_box mb-2"><%= t ("Up new post") %></button>
-          <section id = "up-post-form"></section>
-        <% end %>
-        <% if @user.posts.any? %>
+        <% if @feed_items.any? %>
           <ol class="posts">
-            <%= render @posts %>
+            <%= render @feed_items %>
           </ol>
-          <%= paginate @posts, theme: "twitter-bootstrap-4" %>
+          <%= paginate @feed_items, theme: "twitter-bootstrap-4" %>
         <% else %>
           <p class="text-primary text_center"><%= t ("You dont have any post!") %></p>
         <% end %>
@@ -38,6 +34,3 @@
     </div>
   </div>
 </div>
-<script>
-    <%= render partial: "show.js.erb" %>
-</script>
