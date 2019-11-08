@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
-  has_many :review_posts, dependent: :destroy
+  has_many :posts, dependent: :destroy
   has_many :reactions, dependent: :destroy
   has_many :comments, dependent: :destroy
 
@@ -33,8 +33,13 @@ class User < ApplicationRecord
     end
   end
 
+
   def activate
     update_attributes activated: true, activated_at: Time.zone.now
+  end
+
+  def feed
+    review_posts
   end
 
   private

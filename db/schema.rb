@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_06_092238) do
+ActiveRecord::Schema.define(version: 2019_11_06_124603) do
 
   create_table "advertisements", force: :cascade do |t|
     t.text "title"
     t.text "content"
     t.integer "user_id"
     t.integer "place_id"
-    t.boolean "status"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["place_id"], name: "index_advertisements_on_place_id"
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 2019_11_06_092238) do
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.integer "user_id"
-    t.integer "review_post_id"
+    t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["review_post_id"], name: "index_comments_on_review_post_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -59,13 +59,34 @@ ActiveRecord::Schema.define(version: 2019_11_06_092238) do
     t.index ["city_id"], name: "index_places_on_city_id"
   end
 
+  create_table "post_images", force: :cascade do |t|
+    t.string "link"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_post_images_on_post_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text "title"
+    t.text "content"
+    t.integer "status"
+    t.integer "user_id"
+    t.integer "place_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_posts_on_place_id"
+    t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
   create_table "reactions", force: :cascade do |t|
     t.integer "reaction_type"
     t.integer "user_id"
-    t.integer "review_post_id"
+    t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["review_post_id"], name: "index_reactions_on_review_post_id"
+    t.index ["post_id"], name: "index_reactions_on_post_id"
     t.index ["user_id"], name: "index_reactions_on_user_id"
   end
 
@@ -74,18 +95,6 @@ ActiveRecord::Schema.define(version: 2019_11_06_092238) do
     t.integer "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "review_posts", force: :cascade do |t|
-    t.text "title"
-    t.text "content"
-    t.integer "user_id"
-    t.integer "place_id"
-    t.boolean "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["place_id"], name: "index_review_posts_on_place_id"
-    t.index ["user_id"], name: "index_review_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
