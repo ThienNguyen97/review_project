@@ -20,6 +20,7 @@ module ReviewProject
     config.assets.paths << "#{Rails.root}/app/assets/fonts" 
     config.to_prepare do
         Devise::SessionsController.layout "user"
+        Devise::RegistrationsController.layout "user"
     end
    end
 end
