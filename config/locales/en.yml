@@ -53,6 +53,7 @@ en:
     edit_user: "Edit Information"
     newfeed: "New Feed"
     sign-in-fb: "Sign in with Facebook"
+    forgot_password: "Forgot password"
   dashboard: "Dashboard"
   admin:
     header:
