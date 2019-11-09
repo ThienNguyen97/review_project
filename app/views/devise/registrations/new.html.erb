@@ -1,91 +1,214 @@
 <% provide :title, t("page_title.signup") %>
 <style>
-.center{
-  margin: auto;
-  width: 25%;
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+*:focus {
+  outline: none;
 }
-.field{
-  color: #2a2a2a
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #DDD;
+  font-size: 16px;
+  color: #222;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }
-.field input{
-  width: 100%
+
+#login-box {
+  position: relative;
+  margin: 5% auto;
+  width: 800px;
+  height: 600px;
+  background: #FFF;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
-.field input[type = radio]{
-  width: 5%;
-  height: 5%;
-  margin-top: 5px;
-  margin-bottom: 5px
+
+.left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 40px;
+  width: 600px;
+  height: 500px;
 }
-.actions input{
-  width: 100%
+
+.none {
+  display: none;
 }
-.nutphu{
+
+h1 {
+  margin: 0 0 20px 0;
+  font-weight: 300;
+  font-size: 28px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="password"] {
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  padding: 4px;
+  width: 300px;
+  height: 32px;
+  border: none;
+  border-bottom: 1px solid #AAA;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  transition: 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="password"]:focus {
+  border-bottom: 2px solid #16a085;
+  color: #16a085;
+  transition: 0.2s ease;
+}
+
+input[type="submit"] {
+  margin-top: 28px;
+  width: 200px;
+  height: 100px;
+  background: #16a085;
+  border: none;
+  border-radius: 2px;
+  color: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  opacity: 0.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+input[type="submit"]:active {
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+.or {
+  position: absolute;
+  top: 200px;
+  left: 400px;
+  width: 40px;
+  height: 40px;
+  background: #DDD;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  line-height: 40px;
   text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px
 }
-.nutphu a{
-  color: #2a2a2a
+
+.right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+  padding: 100px;
+  width: 380px;
+  height: 600px;
+  background: url('https://goo.gl/YbktSj');
+  background-size: cover;
+  background-color: #FFB6C1;
+  background-position: center;
+  border-radius: 0 2px 2px 0;
 }
-input:hover, input:focus {
-    outline: none !important;
+
+.right .loginwith {
+  display: block;
+  margin-bottom: 40px;
+  font-size: 28px;
+  color: #FFF;
+  text-align: center;
+}
+
+button.social-signin {
+  margin-bottom: 20px;
+  width: 220px;
+  height: 36px;
+  border: none;
+  border-radius: 2px;
+  color: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+button.social-signin:hover,
+button.social-signin:focus {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+}
+
+button.social-signin:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+}
+
+button.social-signin.facebook {
+  background: #32508E;
+}
+
+button.social-signin.twitter {
+  background: #55ACEE;
+}
+
+button.social-signin.google {
+  background: #DD4B39;
 }
 </style>
-<div class="row">
-  <div class="center">
-    <div style="text-align: center"><h1><%= t "page_title.signup" %></h1></div>
-    <div class="row">
-      <div style="width: 100%">
+<div id="login-box">
+  <div class="left">
+    <h1><%= t "page_title.signup" %></h1>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
 
-          <div class="field">
-            <%= f.label :name %><br />
-            <%= f.text_field :name %>
-          </div>
+            <%= f.text_field :name, placeholder: "Username" %>
+        
+            <%= f.email_field :email, placeholder: "E-mail" %>
 
-          <div class="field">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :birthday, class: "text-black" %>
+            <%= f.date_field :birthday %>
+            
             <div>
-              <%= f.date_field :birthday %>
+              <p for="male">Male</p><span></span><%= f.radio_button :gender, Settings.user.gender.male %></span>
+              <p for="female">Female</p><span></span><%= f.radio_button :gender, Settings.user.gender.female %></span>
             </div>
-          </div>
 
-          <div class="field">
-            <div class="genderdiv">
-              <%= f.label :gender, class: "text-black" %>
-              <%= f.radio_button :gender, Settings.user.gender.male %><span>Male</span>
-              <%= f.radio_button :gender, Settings.user.gender.female %><span>Female</span>
-            </div>
-          </div>
-
-          <div class="field">
-            <%= f.label :password %>
             <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> characters minimum)</em>
             <% end %><br />
-            <%= f.password_field :password, autocomplete: "new-password" %>
-          </div>
+            <%= f.password_field :password, placeholder: "Password" %>
 
-          <div class="field">
-            <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-          </div>
+            <%= f.password_field :password_confirmation, placeholder: "Retype password" %>
 
-          <div class="actions">
-            <%= f.submit "Sign up", class: "btn btn-primary loginbtn" %>
-          </div>
+            <%= f.submit "SIGN ME UP" %>
+            <span> OR </span><br />
+            <%= render "devise/shared/links" %>
         <% end %>
-
-        <div class="nutphu">
-          <%= render "devise/shared/links" %>
-        </div>
-      </div>
-    </div>
   </div>
+        
+  <div class="right">
+          <span class="loginwith">Sign in with<br />social network</span>
+    
+          <button class="social-signin facebook">Log in with facebook</button>
+          <button class="social-signin twitter">Log in with Twitter</button>
+          <button class="social-signin google">Log in with Google+</button>
+  </div>
+        
+  <div class="or">OR</div>
 </div>
