@@ -1,0 +1,49 @@
+<% provide :title, @title %>
+<% provide :header_partial, "shared/header_partial/title" %>
+
+<div class="site-section bg-light">
+  <div class="container">
+    <div class="row">
+
+      <aside class="col-md-4">
+
+        <div class="card">
+          <div class="card-body">
+            <%= gravatar_for @user %>
+            <strong><%= link_to @user.name, @user %></strong>
+            <hr>
+            <section class="stats">
+              <%= render "shared/stats" %>
+            </section>
+            <hr>
+            <%= render "follow_form" if user_signed_in? %>
+          </div>
+        </div>
+
+        <div class="card card-follow">
+          <div class="card-header">
+            <%= @title %>
+          </div>
+          <% if @users.any? %>
+            <div class="user_avatars">
+              <% @users.each do |user| %>
+                <%= link_to gravatar_for(user, size: Settings.user.gravatar_size_mini), user %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+      </aside>
+
+      <div class="col-md-8 card">
+        <% if @users.any? %>
+          <ul class="users follow">
+            <%= render @users %>
+          </ul>
+          <%= paginate @users, theme: "twitter-bootstrap-4" %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

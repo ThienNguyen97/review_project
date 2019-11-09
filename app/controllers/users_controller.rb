@@ -1,11 +1,16 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   skip_before_action :authenticate_user!, only: :show
-  before_action :load_user, only: %i(show destroy)
+  before_action :load_user, only: %i(show destroy following followers)
   before_action :correct_user, only: %i(edit update)
   before_action :admin_user, only: :destroy
 
-  def show; end
+  def show
+    @posts = @user.posts.create_desc.page(
+      params[:page]
+    ).per Settings.num_feeds_per_page
+    redirect_to(root_url) && return unless @user
+  end
 
   def index; end
 
@@ -13,7 +18,12 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def newfeed; end
+  def newfeed
+    @reivew_posts = current_user.posts.build
+    @feed_items = current_user.feed.create_desc.page(
+      params[:page]
+    ).per Settings.num_feeds_per_page
+  end
 
   def create
     @user = User.new user_params
@@ -37,6 +47,18 @@ class UsersController < ApplicationController
       flash[:danger] = t"flash.danger.cannot_deleted"
     end
     redirect_to user_url
+  end
+
+  def following
+    @title = t "label.following"
+    @users = @user.following.page params[:page]
+    render :show_follow
+  end
+
+  def followers
+    @title = t "label.followers"
+    @users = @user.followers.page params[:page]
+    render :show_follow
   end
 
   private

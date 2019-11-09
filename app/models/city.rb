@@ -1,5 +1,5 @@
 class City < ApplicationRecord
-  has_many :travel
+  has_many :place
   validates :name, presence: true
 
   scope :order_by_name, ->(_name){order :name}

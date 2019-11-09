@@ -23,13 +23,17 @@ gem "rails-i18n"
 gem "rails-ujs"
 gem "sass-rails", "~> 5.0"
 gem "sqlite3"
+gem "figaro"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
+gem "rubocop", "~> 0.54.0", require: false
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
 
   gem "mysql2"
+  gem "rspec-rails"
+  gem "shoulda-matchers"
   gem "rubocop", "~> 0.54.0", require: false
 end
 
@@ -41,9 +45,14 @@ group :development do
 end
 
 group :test do
-  gem "capybara", ">= 2.15"
+  gem "capybara"
   gem "chromedriver-helper"
   gem "selenium-webdriver"
 end
 
+gem "ckeditor"
+gem "mini_magick"
+gem "carrierwave"
+gem "cloudinary"
+gem "fastclick-rails"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

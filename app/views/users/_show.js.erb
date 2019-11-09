@@ -1,0 +1,9 @@
+$("#up-post-btn").click(function(){
+  var clicks = $(this).data('clicks');
+  if (clicks) {
+    $("#up-post-form").empty();
+  } else {
+    $("#up-post-form").html("<%= escape_javascript(render partial: 'shared/post_form') %>");
+  }
+  $(this).data("clicks", !clicks);
+});

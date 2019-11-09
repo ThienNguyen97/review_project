@@ -3,7 +3,7 @@ class Place < ApplicationRecord
   has_many :place_images, dependent: :destroy
 
   scope :order_by_name, ->(_name){order :name}
-  # scope :popular_places, ->{order(rate_point: :desc).take Settings.popular_places}
+  scope :popular_places, ->{order(rate_point: :desc).take Settings.popular_places}
 
   scope :get_places, ->(name, address, type){where(name: name) | where(address: address)}
   scope :search_by_name, ->(name){where "name like ?", name}

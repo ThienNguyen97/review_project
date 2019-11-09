@@ -1,0 +1,60 @@
+<div class="card post-card" id="post-<%= post.id %>">
+  <div class="p-1">
+    <%= link_to gravatar_for(post.user, size: Settings.user.gravatar_post_size), post.user %>
+    <span class="user"><%= link_to post.user.name, post.user %></span>
+  </div>
+
+  <span class="timestamp">
+    <%= t("label.posted") %> <%= t(:time_ago,time: time_ago_in_words(post.created_at) )%>.
+    <% if current_user == post.user %>
+    <%= link_to t("button.delete"), post, method: :delete, data: { confirm: t("dialog.delete_post_confirm"),remote: true } %>
+    <% end %>
+  </span>
+  <span class="content">
+    <div class="card address-card p-1">
+      <%= link_to detail_index_path(name: post.place_name) do %>
+          <strong><%= post.place_name %></strong>
+          <span class= "address">
+            <i class = "icon icon-room"></i>
+            <%= post.place_address %>
+          </span>
+      <% end %>
+      <span>
+        <!-- rate -->
+      </span>
+    </div>
+    <h5><%= link_to truncate(post.title, length: Settings.truncate_length.post_title), posts_show_path(id: post.id) %></h5>
+    <p><%= sanitize(post.content) %></p>
+    <% if !post.post_images.empty? %>
+      <div id="imagesAlbum-<%= post.id %>" class="carousel slide " data-ride="carousel" data-interval="false">
+        <ol class="carousel-indicators">
+          <% num_of_images = post.post_images.count %>
+          <% post.post_images.each_with_index do |img, i| %>
+          <li data-target="#imagesAlbum-<%= post.id %>" data-slide-to="<%= i%>" class="<%= (i == 0)? 'active': '' %>"></li>
+          <% end %>
+        </ol>
+        <div class="carousel-inner">
+          <% num_of_images = post.post_images.count %>
+          <% post.post_images.each_with_index do |img, i| %>
+            <div class="carousel-item <%= (i == 0)? 'active': '' %>">
+              <%= image_tag post.post_images.first.link %>
+              <div class="carousel-caption">
+                <h5><%= i+1 %>/<%= num_of_images %></h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+        <a class="carousel-control-prev" href="#imagesAlbum-<%= post.id %>" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#imagesAlbum-<%= post.id %>" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+      </div>
+    <% end %>
+  </span>
+
+   <!--  like -->
+   <!-- comment -->
+</div>
