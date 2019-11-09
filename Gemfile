@@ -53,5 +53,6 @@ end
 gem "ckeditor"
 gem "mini_magick"
 gem "carrierwave"
+gem "cloudinary"
 gem "fastclick-rails"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

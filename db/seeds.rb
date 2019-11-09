@@ -43,6 +43,14 @@ users.each do |user|
   end
 end
 
+#Following/Followers
+users = User.all
+user  = users.first
+following = users[2..5]
+followers = users[3..9]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
+
 posts = Post.all
 posts.each do |post|
   (1..8).to_a.shuffle.take(3).each do |i|

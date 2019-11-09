@@ -15,11 +15,12 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get :newfeed
+      get :following, :followers, :newfeed
     end
   end
 
   resources :places, only: :index
   resources :cities, only: :index
   resources :posts, only: %i(create destroy)
+  resources :relationships, only: %i(create destroy)
 end

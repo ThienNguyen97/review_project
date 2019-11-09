@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   skip_before_action :authenticate_user!, only: :show
-  before_action :load_user, only: %i(show destroy)
+  before_action :load_user, only: %i(show destroy following followers)
   before_action :correct_user, only: %i(edit update)
   before_action :admin_user, only: :destroy
 
@@ -47,6 +47,18 @@ class UsersController < ApplicationController
       flash[:danger] = t"flash.danger.cannot_deleted"
     end
     redirect_to user_url
+  end
+
+  def following
+    @title = t "label.following"
+    @users = @user.following.page params[:page]
+    render :show_follow
+  end
+
+  def followers
+    @title = t "label.followers"
+    @users = @user.followers.page params[:page]
+    render :show_follow
   end
 
   private
