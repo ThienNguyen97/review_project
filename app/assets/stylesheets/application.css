@@ -11,24 +11,5 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
- *= require default
- *= require animate
- *= require aos
- *= require bootstrap.min
- *= require component
- *= require feature_post
- *= require flaticon
- *= require font-awesome.min
- *= require liner_icon
- *= require magnific-popup
- *= require nice-select
- *= require owl.carousel.min
- *= require post_style
- *= require search
- *= require slick
- *= require style
- *= require swiper.min
- *= require custom
- *= require themify-icons
+ *= require_tree ./main
  */
-

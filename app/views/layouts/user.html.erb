@@ -2,12 +2,16 @@
 <html>
   <head>
     <title><%= full_title yield :title %></title>
-    <%= render "layouts/rails_default" %>
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
+
+	<%= stylesheet_link_tag "user", media: "all", "data-turbolinks-track": "reload" %>
+	<%= javascript_include_tag "user", "data-turbolinks-track": "reload" %>
+	<%= action_cable_meta_tag %>
   </head>
   <body>
     <div class="site-wrap">
       <%= yield %>
-    	<h1>Users</h1>
     </div>
   </body>
 </html>
