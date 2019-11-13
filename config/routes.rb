@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   scope :admin do
     root "admin#index"
+    get '/users', to: 'admin#users'
+    get '/places', to: 'admin#places'
+    get '/reviews', to: 'admin#reviews'
   end
 
   resources :users do
