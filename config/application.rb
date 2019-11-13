@@ -18,6 +18,7 @@ module ReviewProject
 
     config.assets.enabled = true
     config.assets.paths << "#{Rails.root}/app/assets/fonts" 
+    config.assets.paths << "#{Rails.root}/app/assets/plugins" 
     config.to_prepare do
         Devise::SessionsController.layout "user"
         Devise::RegistrationsController.layout "user"
