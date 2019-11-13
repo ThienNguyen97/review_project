@@ -25,3 +25,4 @@ truncate_length:
   place_content: 500
   post_title: 50
   post_content: 100
+page_number: 5

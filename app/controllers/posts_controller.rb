@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :load_support
   skip_before_action :authenticate_user!, only: :show
   before_action :correct_user, only: :destroy
 
@@ -40,5 +41,9 @@ class PostsController < ApplicationController
   def correct_user
     @post = current_user.posts.find_by id: params[:id]
     redirect_to root_url if @post.nil?
+  end
+
+  def load_support
+    @support = Supports::Posts.new post: Post.all, param: params
   end
 end

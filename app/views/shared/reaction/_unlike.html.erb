@@ -1,0 +1,7 @@
+<%= form_for(current_user.reactions.find_by(post_id: post_id),
+             html: { method: :delete },
+             remote: true) do |f| %>
+  <%= button_tag(type: "submit", class: "btn btn-primary float-left") do %>
+    <i class="far fa-thumbs-up"></i> <%= t("button.unlike") %>
+  <% end %>
+<% end %>

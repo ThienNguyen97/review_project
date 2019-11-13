@@ -1,0 +1,5 @@
+<%= num_of_comments = Comment.where("post_id =?", @post_id).count %>
+$("#num_of_comments-<%= @post_id %>").html("<%= I18n.t(:'label.comment', count: num_of_comments)%>");
+$("#comment-modal-<%= @post_id %>").modal("hide");
+$("#commented-users-modal-<%= @post_id %>").html("<%= escape_javascript(render partial: "comment_modal",locals: { post_id: @post_id }) %>");
+$("#comment-modal-<%= @post_id %>").modal("show");

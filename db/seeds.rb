@@ -61,3 +61,28 @@ posts.each do |post|
     PostImage.create! link: "https://res.cloudinary.com/hedspi/image/upload/v1564448966/travel-discovery/play_places/#{i}.jpg", post_id: post.id
   end
 end
+
+# users = User.order(:created_at).take(6)
+# posts = Post.order(:created_at).take(10)
+# posts.each do |post|
+#   users.each do |user|
+#     Comment.create! content: Faker::Lorem.sentence,
+#       user_id: user.id,
+#       post_id: post.id
+#   end
+# end
+
+ReactionType.create(
+  description: "like"
+)
+
+reaction_type_id = ReactionType.first.id
+users = User.order(:created_at).take(9)
+posts = Post.order(:created_at).take(12)
+posts.each do |post|
+  users.each do |user|
+    Reaction.create! reaction_type_id: reaction_type_id,
+      user_id: user.id,
+      post_id: post.id
+  end
+end

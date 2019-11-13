@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_06_124603) do
+ActiveRecord::Schema.define(version: 2019_11_20_084448) do
 
   create_table "advertisements", force: :cascade do |t|
     t.text "title"
@@ -80,13 +80,20 @@ ActiveRecord::Schema.define(version: 2019_11_06_124603) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "reaction_types", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reactions", force: :cascade do |t|
-    t.integer "reaction_type"
+    t.integer "reaction_type_id"
     t.integer "user_id"
     t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_reactions_on_post_id"
+    t.index ["reaction_type_id"], name: "index_reactions_on_reaction_type_id"
     t.index ["user_id"], name: "index_reactions_on_user_id"
   end
 

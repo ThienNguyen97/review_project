@@ -11,7 +11,7 @@
     <% end %>
   </span>
   <span class="content">
-    <h5> Place: 
+    <h5> Place:
       <%= link_to detail_index_path(name: post.place_name) do %>
           <strong><%= post.place_name %></strong>
           <span class= "address">
@@ -56,5 +56,32 @@
   </span>
 
    <!--  like -->
+  <span class="reaction-amount">
+    <span class= "like">
+      <%= link_to reaction_path(post.id), remote: true do %>
+      <i class="far fa-thumbs-up mr-2"></i>
+      <span id ="num_of_likes-<%= post.id %>">
+        <% num_of_likes = post.num_of_likes %>
+        <%= t(:"label.like", count: num_of_likes)%>
+      </span>
+      <% end %>
+    </span>
    <!-- comment -->
+   <span class= "comment">
+      <%= link_to post_comment_path(post.id), remote: true do %>
+      <i class="fa fa-comment m-2"></i>
+      <span id="num_of_comments-<%= post.id %>">
+        <% num_of_comments = post.num_of_comments %>
+        <%= t(:"label.comment", count: num_of_comments)%>
+      </span>
+      <% end %>
+    </span>
+  </span>
+</div>
+
+<div class= "card-footer">
+  <%= render "like_form",post_id: post.id if user_signed_in? %>
+</div>
+
+<div id="reaction-users-modal-<%= post.id %>">
 </div>

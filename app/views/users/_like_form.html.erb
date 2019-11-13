@@ -1,0 +1,7 @@
+<div id="reaction_form-<%= post_id%>">
+  <% if current_user.having_reaction?(current_user.id, post_id) %>
+    <%= render "unlike",post_id: post_id %>
+  <%else %>
+   <%= render "like",post_id: post_id %>
+  <% end %>
+</div>

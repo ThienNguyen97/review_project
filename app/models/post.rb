@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_many :reactions, dependent: :destroy
   has_many :post_images, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :commented_users, through: :comments, source: :user
   belongs_to :user
   belongs_to :place
 
@@ -24,4 +25,13 @@ class Post < ApplicationRecord
 
   POST_PARAMS = [:title, :content, :place_id,
   post_images_attributes: [:id, :post_id, :image]].freeze
+
+  def num_of_likes
+    reactions.where("reaction_type_id = ?", Settings.reaction_type.like).count
+  end
+
+  def num_of_comments
+    comments.count
+  end
+
 end

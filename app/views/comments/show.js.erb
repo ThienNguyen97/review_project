@@ -1,0 +1,3 @@
+$("#commented-users-modal-<%= @post_id %>").html("<%= escape_javascript(render partial: 'comment_modal',locals: { post_id: @post_id }) %>");
+console.log("<%= @post_id%>");
+$('#comment-modal-<%= @post_id %>').modal('show');

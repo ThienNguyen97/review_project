@@ -1,0 +1,19 @@
+<div id="reaction-modal" class="list-like-modal modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><%= t("label.likes") %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <% if @liked_post_users.any? %>
+          <ul class="users follow">
+            <%= render @liked_post_users %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

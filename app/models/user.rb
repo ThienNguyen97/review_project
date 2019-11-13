@@ -41,6 +41,11 @@ class User < ApplicationRecord
     end
   end
 
+  def self.liked_post_users reaction_type_id, post_id
+    joins(:reactions).where("reaction_type_id = ? and post_id = ?",
+        reaction_type_id, post_id)
+  end
+
 
   def activate
     update_attributes activated: true, activated_at: Time.zone.now
@@ -63,6 +68,10 @@ class User < ApplicationRecord
 
   def following? other_user
     following.include? other_user
+  end
+
+  def having_reaction?user_id, post_id
+    reactions.find_by user_id: user_id, post_id: post_id
   end
 
   private

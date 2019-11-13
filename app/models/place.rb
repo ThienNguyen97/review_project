@@ -1,4 +1,6 @@
 class Place < ApplicationRecord
+  # ratyrate_rateable "quality"
+
   belongs_to :city
   has_many :place_images, dependent: :destroy
 

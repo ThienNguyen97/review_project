@@ -18,3 +18,5 @@
 //= require bootstrap
 //= require cable
 //= require_tree ./main
+//= require post
+//= require comment

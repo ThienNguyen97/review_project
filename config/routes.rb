@@ -24,6 +24,9 @@ Rails.application.routes.draw do
 
   resources :places, only: :index
   resources :cities, only: :index
-  resources :posts, only: %i(create destroy)
   resources :relationships, only: %i(create destroy)
+  resources :reactions, only: %i(show create destroy)
+  resources :posts do
+    resources :comments, only: %i(show edit create destroy)
+  end
 end
