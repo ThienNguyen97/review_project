@@ -11,7 +11,7 @@
     <% end %>
   </span>
   <span class="content">
-    <div class="card address-card p-1">
+    <h5> Place: 
       <%= link_to detail_index_path(name: post.place_name) do %>
           <strong><%= post.place_name %></strong>
           <span class= "address">
@@ -22,8 +22,8 @@
       <span>
         <!-- rate -->
       </span>
-    </div>
-    <h5><%= link_to truncate(post.title, length: Settings.truncate_length.post_title), posts_show_path(id: post.id) %></h5>
+    </h5>
+    <h3><%= link_to truncate(post.title, length: Settings.truncate_length.post_title), posts_show_path(id: post.id) %></h3>
     <p><%= sanitize(post.content) %></p>
     <% if !post.post_images.empty? %>
       <div id="imagesAlbum-<%= post.id %>" class="carousel slide " data-ride="carousel" data-interval="false">

@@ -21,11 +21,10 @@ body, html { font-size: 100%; padding: 0; margin: 0;}
 
 body {
 	font-family: 'Lato', Calibri, Arial, sans-serif;
-	color: #eaeaea;
 }
 
 a {
-	color: #b4c7da;
+	/*color: #b4c7da;*/
 	text-decoration: none;
 }
 
@@ -146,6 +145,19 @@ a:active {
 
 .codrops-icon-prev:before {
 	content: "\e004";
+}
+
+.timestamp{
+	padding: 10px;
+}
+
+.content{
+	padding: 10px
+}
+
+.card{
+	padding: 10px;
+	margin: 10px;
 }
 
 @media screen and (max-width: 46.0625em) {

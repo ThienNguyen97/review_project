@@ -17,4 +17,3 @@
 //= require turbolinks
 //= require bootstrap
 //= require cable
-//= require_tree ./admin

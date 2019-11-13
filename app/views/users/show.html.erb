@@ -22,7 +22,9 @@
 
       <div class="col-md-8">
         <% if current_user? @user%>
-          <button id= "up-post-btn" type="button" class="btn btn-primary border_box mb-2"><%= t ("Up new post") %></button>
+          <ol class="posts">
+            <button id= "up-post-btn" type="button" class="btn btn-primary border_box mb-2"><%= t ("Up new post") %></button>
+          </ol>
           <section id = "up-post-form"></section>
         <% end %>
         <% if @user.posts.any? %>
