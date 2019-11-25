@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  rolify
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
   has_many :posts, dependent: :destroy
@@ -15,6 +16,7 @@ class User < ApplicationRecord
 
   attr_accessor :activation_token
   before_save :downcase_email
+  after_create :assign_default_role
 
   validates :name, presence: true,
   length: {maximum: Settings.user.validates.max_name_length}
@@ -72,6 +74,10 @@ class User < ApplicationRecord
 
   def having_reaction?user_id, post_id
     reactions.find_by user_id: user_id, post_id: post_id
+  end
+
+  def assign_default_role
+    self.add_role(:moderator) if self.roles.blank?
   end
 
   private

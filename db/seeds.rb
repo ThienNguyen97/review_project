@@ -1,3 +1,17 @@
+Role.create(name: 'moderator')
+Role.create(name: 'admin')
+
+user1 = User.create(email: 'admin@test.com',
+          password: '123456',
+          password_confirmation: '123456',
+          name: 'Admin')
+user1.add_role(:admin)
+user2 = User.create(email: 'user@test.com',
+          password: '123456',
+          password_confirmation: '123456',
+          name: 'Adv Manage')
+user2.add_role(:moderator)
+
 10.times do |n|
   name  = Faker::Name.name
   email = "test#{n+1}@test.com"

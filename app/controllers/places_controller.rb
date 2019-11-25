@@ -1,4 +1,5 @@
 class PlacesController < ApplicationController
+  load_and_authorize_resource
   def index
     @places = Place.order_by_name(:name).search_by_name "%#{params[:term]}%"
     render json: @places.map{|f| {id: f.id, value: f.name, city_name: f.city_name}}

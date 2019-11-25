@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  resourcify
   scope :order_desc, ->{order created_at: :desc}
   has_many :reactions, dependent: :destroy
   has_many :post_images, dependent: :destroy

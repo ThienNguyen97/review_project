@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount Ckeditor::Engine => "/ckeditor"
   root "static_pages#home"
   get "/category", to: 'categories#home'
@@ -9,12 +10,12 @@ Rails.application.routes.draw do
   get "search/index"
   get "posts/show"
 
-  scope :admin do
-    root "admin#index"
-    get '/users', to: 'admin#users'
-    get '/places', to: 'admin#places'
-    get '/reviews', to: 'admin#reviews'
-  end
+  # scope :admin do
+  #   root "admin#index"
+  #   get '/users', to: 'admin#users'
+  #   get '/places', to: 'admin#places'
+  #   get '/reviews', to: 'admin#reviews'
+  # end
 
   resources :users do
     member do
