@@ -20,3 +20,4 @@
 //= require_tree ./main
 //= require post
 //= require comment
+//= require custom

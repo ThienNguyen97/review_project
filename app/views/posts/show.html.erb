@@ -44,7 +44,7 @@
                                   <div class="carousel-inner">
                                       <% @post.post_images.each_with_index do |img, i| %>
                                           <div class="gallery mt-3">
-                                              <%= image_tag(img.link, :class => "w-100") %>
+                                              <%= image_tag(img.link.url, :class => "w-100") %>
                                           </div>
                                       <% end %>
                                   </div>

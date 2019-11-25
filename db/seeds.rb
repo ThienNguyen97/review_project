@@ -68,11 +68,11 @@ followers.each { |follower| follower.follow(user) }
 posts = Post.all
 posts.each do |post|
   (1..8).to_a.shuffle.take(3).each do |i|
-        PostImage.create! link: "https://res.cloudinary.com/hedspi/image/upload/v1564448966/travel-discovery/hotels/#{i}.jpg", post_id: post.id
+        PostImage.create! remote_link_url: "https://res.cloudinary.com/hedspi/image/upload/v1564448966/travel-discovery/hotels/#{i}.jpg", post_id: post.id
   end
 
   (1..10).to_a.shuffle.take(2).each do |i|
-    PostImage.create! link: "https://res.cloudinary.com/hedspi/image/upload/v1564448966/travel-discovery/play_places/#{i}.jpg", post_id: post.id
+    PostImage.create! remote_link_url: "https://res.cloudinary.com/hedspi/image/upload/v1564448966/travel-discovery/play_places/#{i}.jpg", post_id: post.id
   end
 end
 
