@@ -157,7 +157,7 @@ a:active {
 
 .card{
 	padding: 10px;
-	margin: 10px;
+	/* margin: 10px; */
 }
 
 @media screen and (max-width: 46.0625em) {

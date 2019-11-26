@@ -1,6 +1,7 @@
 <div class="comments" id="list-reviews">
   <% if comments.any? %>
     <% comments.each do |comment| %>
+      <hr>
       <div class="post-content">
         <div class="avatar">
           <%= link_to "#", target: "_blank", class: "user",
