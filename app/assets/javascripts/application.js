@@ -17,7 +17,8 @@
 //= require turbolinks
 //= require bootstrap
 //= require cable
-//= require_tree ./main
+//= require ./main/jquery-1.12.1.min
+//= require ./main/bootstrap.min
 //= require post
 //= require comment
 //= require custom
