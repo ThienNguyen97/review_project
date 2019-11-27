@@ -297,3 +297,7 @@ input {
   width: auto;
   margin-left: 0;
 }
+
+.popular_post_image {
+  height: 250px;
+}
