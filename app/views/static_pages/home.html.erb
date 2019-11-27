@@ -1,9 +1,7 @@
 <% provide :header_partial, "shared/header_partial/search" %>
 
-<div class="site-section">
-  <div class="container">
-<div class="site-section" >
-  <div class="container">
+<div class="container">
+  <div class="site-section" >
     <div class="row justify-content-center mb-5">
       <div class="col-md-7 text-center border-primary">
         <h2 class="font-weight-light text-primary"><%= t ".popular-places" %></h2>
@@ -17,27 +15,25 @@
           <div class="listing-item">
             <div class="listing-image">
               <% if place.place_images.first %>
-                <%= image_tag(place.place_images.first.link, class: "img-fluid popular_post_image") %>
+                <%= image_tag(place.place_images.first.link, class: "img-fluid img-thumbnail popular_post_image w-100") %>
               <% end %>
             </div>
             <div class="listing-item-content">
               <%= link_to "#", class: "bookmark", data:{toggle: "tooltip", placement: "left"} do %>
                 <span class="icon-heart"></span>
               <% end %>
-              <h2 class="mb-1">
+              <h2 class="my-2">
                 <%= link_to place.name, detail_index_path(name: place.name) %>
               </h2>
-              <span class="address"><%= place.address %></span>
+              <h5 class="address text-center">Address: <%= place.address %></h5>
             </div>
           </div>
         </div>
       <% end %>
     </div>
   </div>
-</div>
-
-<div class="site-section">
-  <div class="container">
+  <br><hr><br>
+  <div class="site-section">
     <div class="row justify-content-center mb-5">
       <div class="col-md-7 text-center border-primary">
         <h2 class="font-weight-light text-primary"><%= t ".popular-posts" %></h2>
