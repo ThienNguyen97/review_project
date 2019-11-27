@@ -44,12 +44,14 @@
             <span class="focus-input100-2"></span>
           </div>
 
-        <div class="field text-center">
-          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-          <%= f.password_field :current_password, autocomplete: "current-password" %>
+        <div class="wrap-input100 rs1 validate-input">
+          <%= f.password_field :current_password, autocomplete: "current-password", class: "input100", placeholder: "Current passoword" %>
+          <span class="focus-input100-1"></span>
+          <span class="focus-input100-2"></span>
         </div>
+        <div class="text-center"><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i></div>
 
-        <div class="actions">
+        <div class="actions mt-4">
           <%= f.submit "Update", class: "login100-form-btn" %>
         </div>
       <% end %>
