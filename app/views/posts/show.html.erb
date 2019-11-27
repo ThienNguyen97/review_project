@@ -64,11 +64,8 @@
                               </span>
                           <% end %>
                       </span>
+                      <!--Like button -->
                      </div>
-                      <!--  <p class="like-info"><span class="align-middle"><i class="far fa-heart"></i></span> Lily and 5
-                          people like this</p>
-                       <div class="col-sm-4 text-center my-2 my-sm-0">
-                          <p class="comment-count"><span class="align-middle"><i class="far fa-comment"></i></span> 06 Comments</p> -->
                           <ul class="social-icons">
                           <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                           <li><a href="#"><i class="fab fa-twitter"></i></a></li>
@@ -189,10 +186,11 @@
     </section>
   <%#<div>
     <%= render "shared/reaction/like_form",post_id: @post.id if user_signed_in? %>
-  </div %>
+  </div>
 
-  <div id="reaction-users-modal-<%= @post.id %>" 
-  </div>
-  <div id="commented-users-modal-<%= @post.id%>"
-  </div>
+<div id="reaction-users-modal-<%= @post.id %>">
+</div>
+<div id="commented-users-modal-<%= @post.id%>">
+</div>
+
 </div>

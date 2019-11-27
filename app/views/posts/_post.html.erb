@@ -68,7 +68,7 @@
         <% end %>
       </span>
     <!-- comment -->
-    <span class= "comment">
+      <span class= "comment">
         <%= link_to post_comment_path(post.id), remote: true do %>
         <i class="fa fa-comment m-2"></i>
         <span id="num_of_comments-<%= post.id %>">
@@ -78,12 +78,11 @@
         <% end %>
       </span>
     </span>
-  </div>
 
-  <div class= "card-footer">
-    <%= render "like_form",post_id: post.id if user_signed_in? %>
+    <div class= "card-footer">
+      <%= render "like_form",post_id: post.id if user_signed_in? %>
+    </div>
   </div>
-
-  <div id="reaction-users-modal-<%= post.id %>">
-  </div>
+</div>
+<div id="reaction-users-modal-<%= post.id %>">
 </div>

@@ -1,344 +1,68 @@
-<section class="banner_post">
-    <div class="container-fluid">
-        <div class="row justify-content-between">
-            <div class="banner_post_1 banner_post_bg_1">
-                <div class="banner_post_iner text-center">
-                    <a href="category.html"><h5> Fashion / Life style</h5></a> 
-                    <a href="single-blog.html"><h2>All said replenish years void
-                        kind say void </h2></a> 
-                    <p>Posted on April 15, 2019</p>
-                </div>
-            </div><div class="banner_post_1 banner_post_bg_2">
-                <div class="banner_post_iner text-center">
-                    <a href="category.html"><h5> Fashion / Life style</h5></a> 
-                    <a href="single-blog.html"><h2>All said replenish years void
-                        kind say void </h2></a> 
-                    <p>Posted on April 15, 2019</p>
-                </div>
-            </div>
-            <div class="banner_post_1 banner_post_bg_3">
-                <div class="banner_post_iner text-center">
-                    <a href="category.html"><h5> Fashion / Life style</h5></a> 
-                    <a href="single-blog.html"><h2>All said replenish years void
-                        kind say void </h2></a> 
-                    <p>Posted on April 15, 2019</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- banner post end-->
+<% provide :header_partial, "shared/header_partial/search" %>
 
-<!-- subscribe form start-->
-<div class="subscribe_form padding_top margin_top">
-    <div class="container">
-        <div class="row ">
-            <div class="col-lg-12">
-                <div class="subscribe_form_iner">
-                    <form>
-                        <div class="form-row align-items-center justify-content-center">
-                            <div class="col-md-12 col-lg-3">
-                            <h3>Subscribe
-                                    Our Newsletter</h3>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                            <input type="text" class="form-control" placeholder="Your name">
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                            <input type="text" class="form-control" placeholder="Your email">
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                                <a href="#" class="btn_1">Subscribe</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+<div class="site-section">
+  <div class="container">
+<div class="site-section" >
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7 text-center border-primary">
+        <h2 class="font-weight-light text-primary"><%= t ".popular-places" %></h2>
+      </div>
     </div>
+
+    <div class="row">
+
+      <% @places.each  do |place| %>
+        <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
+          <div class="listing-item">
+            <div class="listing-image">
+              <% if place.place_images.first %>
+                <%= image_tag(place.place_images.first.link, class: "img-fluid popular_post_image") %>
+              <% end %>
+            </div>
+            <div class="listing-item-content">
+              <%= link_to "#", class: "bookmark", data:{toggle: "tooltip", placement: "left"} do %>
+                <span class="icon-heart"></span>
+              <% end %>
+              <h2 class="mb-1">
+                <%= link_to place.name, detail_index_path(name: place.name) %>
+              </h2>
+              <span class="address"><%= place.address %></span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-<!-- subscribe form end-->
 
-<!-- feature_post start-->
-<section class="all_post section_padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="single_post post_1 feature_post">
-                            <div class="single_post_img">
-                                <%= image_tag("main/post/post_12.png") %>
-                            </div>
-                            <div class="single_post_text text-center">
-                                <a href="category.html"><h5> Fashion / Life style</h5></a>
-                                <a href="single-blog.html"><h2>All said replenish years void kind say void </h2></a>
-                                <p>Posted on April 15, 2019</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                        <div class="single_post post_1">
-                            <div class="single_post_img">
-                                <%= image_tag("main/post/post_19.png") %>
-                            </div>
-                            <div class="single_post_text text-center">
-                                <a href="category.html"><h5> Fashion / Life style</h5></a> 
-                                <a href="single-blog.html"><h2>Your life is a product your
-                                        right decisions</h2></a> 
-                                <p>Posted on April 15, 2019</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                        <div class="single_post post_1">
-                            <div class="single_post_img">
-                                <%= image_tag("main/post/post_13.png") %>
-                            </div>
-                            <div class="single_post_text text-center">
-                                <a href="category.html"><h5> Fashion / Life style</h5></a> 
-                                <a href="single-blog.html"><h2>Your life is a product your
-                                        right decisions</h2></a> 
-                                <p>Posted on April 15, 2019</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                        <div class="single_post post_1">
-                            <div class="single_post_img">
-                                <%= image_tag("main/post/post_21.png") %>
-                            </div>
-                            <div class="single_post_text text-center">
-                                <a href="category.html"><h5> Fashion / Life style</h5></a> 
-                                <a href="single-blog.html"><h2>Your life is a product your
-                                        right decisions</h2></a> 
-                                <p>Posted on April 15, 2019</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                            <div class="single_post post_1">
-                                <div class="single_post_img">
-                                    <%= image_tag("main/post/post_22.png") %>
-                                </div>
-                                <div class="single_post_text text-center">
-                                    <a href="category.html"><h5> Fashion / Life style</h5></a> 
-                                    <a href="single-blog.html"><h2>Your life is a product your
-                                            right decisions</h2></a> 
-                                    <p>Posted on April 15, 2019</p>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                        <div class="single_post post_1">
-                            <div class="single_post_img">
-                                <%= image_tag("main/post/post_23.png") %>
-                            </div>
-                            <div class="single_post_text text-center">
-                                <a href="category.html"><h5> Fashion / Life style</h5></a> 
-                                <a href="single-blog.html"><h2>Your life is a product your
-                                        right decisions</h2></a> 
-                                <p>Posted on April 15, 2019</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                            <div class="single_post post_1">
-                                <div class="single_post_img">
-                                    <%= image_tag("main/post/post_24.png") %>
-                                </div>
-                                <div class="single_post_text text-center">
-                                    <a href="category.html"><h5> Fashion / Life style</h5></a> 
-                                    <a href="single-blog.html"><h2>Your life is a product your
-                                            right decisions</h2></a> 
-                                    <p>Posted on April 15, 2019</p>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                        <div class="single_post post_1">
-                            <div class="single_post_img">
-                                <%= image_tag("main/post/post_18.png") %>
-                            </div>
-                            <div class="single_post_text text-center">
-                                <a href="category.html"><h5> Fashion / Life style</h5></a> 
-                                <a href="single-blog.html"><h2>Your life is a product your
-                                        right decisions</h2></a> 
-                                <p>Posted on April 15, 2019</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                            <div class="single_post post_1">
-                                <div class="single_post_img">
-                                    <%= image_tag("main/post/post_17.png") %>
-                                </div>
-                                <div class="single_post_text text-center">
-                                    <a href="category.html"><h5> Fashion / Life style</h5></a> 
-                                    <a href="single-blog.html"><h2>Your life is a product your
-                                            right decisions</h2></a> 
-                                    <p>Posted on April 15, 2019</p>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-                <div class="page_pageniation">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="sidebar_widget">
-                    <div class="single_sidebar_wiget search_form_widget">
-                        <form action="#">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder='Search Keyword'
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
-                                <div class="btn_1">search</div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="single_sidebar_wiget">
-                        <div class="sidebar_tittle">
-                            <h3>Categories</h3>
-                        </div>
-                        <div class="single_catagory_item category">
-                            <ul class="list-unstyled">
-                                <li><a href="category.html">Culture</a> <span>(15)</span> </li>
-                                <li><a href="category.html">Creative Design</a> <span>(15)</span> </li>
-                                <li><a href="category.html">Illustration</a> <span>(15)</span> </li>
-                                <li><a href="category.html">Production</a> <span>(15)</span> </li>
-                                <li><a href="category.html">Mangement</a> <span>(15)</span> </li>
-                                <li><a href="category.html">Branding</a> <span>(15)</span> </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="single_sidebar_wiget">
-                        <div class="sidebar_tittle">
-                            <h3>Popular Feeds</h3>
-                        </div>
-                        <div class="single_catagory_post post_2 ">
-                            <div class="category_post_img">
-                                <%= image_tag("main/sidebar/sidebar_1.png") %>
-                            </div>
-                            <div class="post_text_1 pr_30">
-                                <a href="single-blog.html">
-                                    <h3>ホーチミン博物館</h3>
-                                </a>
-                                <p><span> By Sondoan</span> / March 30</p>
-                            </div>
-                        </div>
-                        <div class="single_catagory_post post_2 ">
-                            <div class="category_post_img">
-                                <%= image_tag("main/sidebar/sidebar_2.png") %>
-                            </div>
-                            <div class="post_text_1 pr_30">
-                                <a href="single-blog.html">
-                                    <h3>美しい建物</h3>
-                                </a>
-                                <p><span> By Sondoan </span> / March 15 </p>
-                            </div>
-                        </div>
-                        <div class="single_catagory_post post_2">
-                            <div class="category_post_img">
-                                <%= image_tag("main/sidebar/sidebar_3.png") %>
-                            </div>
-                            <div class="post_text_1 pr_30">
-                                <a href="single-blog.html">
-                                    <h3>ハノイの旗竿</h3>
-                                </a>
-                                <p><span> By Sondoan</span> / March 20</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="single_sidebar_wiget">
-                        <div class="sidebar_tittle">
-                            <h3>Share this post</h3>
-                        </div>
-                        <div class="social_share_icon tags">
-                            <ul class="list-unstyled">
-                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                <li><a href="#"><i class="ti-pinterest"></i></a></li>
-                                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="site-section">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7 text-center border-primary">
+        <h2 class="font-weight-light text-primary"><%= t ".popular-posts" %></h2>
+      </div>
     </div>
-</section>
-<!-- feature_post end-->
-
-<!-- social_connect_part part start-->
-<section class="social_connect_part">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="social_connect">
-                <div class="single-social_connect">
-                    <div class="social_connect_img">
-                        <%= image_tag("main/insta/instagram_1.png") %>
-                        <div class="social_connect_overlay">
-                            <a href="#"><span class="ti-instagram"></span></a> 
-                        </div>
-                    </div>
-                </div>
-                <div class="single-social_connect">
-                    <div class="social_connect_img">
-                        <%= image_tag("main/insta/instagram_2.png") %>
-                        <div class="social_connect_overlay">
-                            <a href="#"><span class="ti-instagram"></span></a> 
-                        </div>
-                    </div>
-                </div>
-                <div class="single-social_connect">
-                    <div class="social_connect_img">
-                        <%= image_tag("main/insta/instagram_3.png") %>
-                        <div class="social_connect_overlay">
-                            <a href="#"><span class="ti-instagram"></span></a> 
-                        </div>
-                    </div>
-                </div>
-                <div class="single-social_connect">
-                    <div class="social_connect_img">
-                        <%= image_tag("main/insta/instagram_4.png") %>
-                        <div class="social_connect_overlay">
-                            <a href="#"><span class="ti-instagram"></span></a> 
-                        </div>
-                    </div>
-                </div>
-                <div class="single-social_connect">
-                    <div class="social_connect_img">
-                        <%= image_tag("main/insta/instagram_5.png") %>
-                        <div class="social_connect_overlay">
-                            <a href="#"><span class="ti-instagram"></span></a> 
-                        </div>
-                    </div>
-                </div>
-                <div class="single-social_connect">
-                    <div class="social_connect_img">
-                        <%= image_tag("main/insta/instagram_6.png") %>
-                        <div class="social_connect_overlay">
-                            <a href="#"><span class="ti-instagram"></span></a> 
-                        </div>
-                    </div>
-                </div>
+    <div class="row mb-3 align-items-stretch">
+      <% @posts.each do |post| %>
+      <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
+        <div class="h-entry">
+          <% if post.post_images.first %>
+            <%= image_tag(post.post_images.first.link.url, class: "img-fluid popular_post_image") %>
+          <% end %>
+          <div class="h-entry-inner">
+            <h2 class="font-size-regular">
+              <%= link_to truncate(post.title, length: 20), posts_show_path(id: post.id) %>
+            </h2>
+            <div class="meta mb-4"><%= t ".by" %>
+              <%= link_to post.user.name, user_path(post.user) %>
+              <span class="mx-2">&bullet;</span>
+              <%= t time_ago_in_words(post.created_at) %>
             </div>
+          </div>
         </div>
-        </div>
+      </div>
+      <% end %>
     </div>
-</section>
+  </div>
+</div>
