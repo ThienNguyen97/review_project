@@ -1,11 +1,9 @@
 <% provide :title, t(".title") %>
-<% provide :header_partial, "shared/header_partial/search" %>
-
 <div class="site-section bg-light">
     <div class="container">
             <div class="list_post">
                 <% if @places.nil? %>
-                  <h1><% t ".not_found" %></h1>
+                  <h1><% Not Found %></h1>
                 <% else %>
                   <% @places.each do |place| %>
                   <div class="d-block d-md-flex listing-horizontal">
@@ -28,7 +26,7 @@
     </div>
 </div>
 
-<div class="site-section">
+<!-- <div class="site-section">
   <div class="container">
     <div class="row justify-content-center mb-5">
       <div class="col-md-7 text-center border-primary">
@@ -57,4 +55,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
