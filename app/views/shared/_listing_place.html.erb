@@ -1,18 +1,19 @@
 <div class="list_post">
-    <% @popular_places.each do |popular_place| %>
-        <div class="d-block d-md-flex listing-horizontal">
+    <div class="d-flex justify-content-around flex-wrap">
+        <% @popular_places.each do |popular_place| %>
+            <div class="w-">
+                <a href="#" class="img d-block">
+                <% if popular_place.place_images.first %>
+                    <%= image_tag(popular_place.place_images.first.link, class: "img-fluid picture", style: 'width: 400px; height: 200px') %>
+                <% end %>
+                </a>
 
-            <a href="#" class="img d-block">
-            <% if popular_place.place_images.first %>
-                <%= image_tag(popular_place.place_images.first.link, class: "img-fluid picture") %>
-            <% end %>
-            </a>
-
-            <div class="lh-content">
-                <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                <h3><%= link_to popular_place.name, detail_index_path(name: popular_place.name) %></h3>
-                <p><%= popular_place.address %></p>
+                <div class="lh-content text-center my-3">
+                    <a href="#" class="bookmark"><span class="icon-heart"></span></a>
+                    <h3><%= link_to popular_place.name, detail_index_path(name: popular_place.name) %></h3>
+                    <p><%= popular_place.address %></p>
+                </div>
             </div>
-        </div>
-    <% end %>
+        <% end %>
+    </div>
 </div>
