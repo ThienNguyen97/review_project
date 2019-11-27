@@ -37,11 +37,7 @@
           <div class="comment-footer">
             <% if current_user == comment.user %>
               <span class="reply">
-                <span class="text">
-                  <%= button_tag t("edit"), value: post.id, id: comment.id,
-                    class: "edit-comment btn btn-default" %>
-                </span>
-                <span class="bullet time-ago-bullet" aria-hidden="true">•</span>
+
                 <span class="text">
                   <%= button_tag t("delete"), value: post.id, id: comment.id,
                     class: "delete-comment btn btn-default" %>

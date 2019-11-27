@@ -1,63 +1,65 @@
 <% provide :title, t("page_title.edit_user") %>
-<h2><%= resource_name.to_s.humanize %></h2>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-        <span class="login100-form-title p-b-33">
-          <%= t "page_title.signup" %>
-        </span>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+          <span class="login100-form-title p-b-33">
+            <%= t "page_title.signup" %>
+          </span>
 
-        <div class="wrap-input100 validate-input">
-          <%= f.text_field :name, autofocus: true, class: "input100", placeholder: "Name" %>
-          <span class="focus-input100-1"></span>
-          <span class="focus-input100-2"></span>
-        </div>
+          <div class="wrap-input100 validate-input">
+            <%= f.text_field :name, autofocus: true, class: "input100", placeholder: "Name" %>
+            <span class="focus-input100-1"></span>
+            <span class="focus-input100-2"></span>
+          </div>
 
-        <div class="rs1 validate-input p-4" style="padding: 20px 0">
-          <%= f.radio_button :gender, Settings.user.gender.male %><span class="option" style="color: #666666"> Male<span>
+          <div class="rs1 validate-input p-4" style="padding: 20px 0">
+            <%= f.radio_button :gender, Settings.user.gender.male %><span class="option" style="color: #666666"> Male<span>
 
-          <%= f.radio_button :gender, Settings.user.gender.female %><span class="option" style="color: #666666"> Female<span>
-        </div>
+            <%= f.radio_button :gender, Settings.user.gender.female %><span class="option" style="color: #666666"> Female<span>
+          </div>
 
-        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input100", placeholder: "Email"%>
-          <span class="focus-input100-1"></span>
-          <span class="focus-input100-2"></span>
-        </div>
+          <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input100", placeholder: "Email"%>
+            <span class="focus-input100-1"></span>
+            <span class="focus-input100-2"></span>
+          </div>
+
+          <div class="wrap-input100 rs1 validate-input">
+            <%= f.date_field :birthday, class: "input100"%>
+            <span class="focus-input100-1"></span>
+            <span class="focus-input100-2"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate="Password is required">
+            <%= f.password_field :password, autofocus: true, class: "input100", placeholder: "Password" %>
+            <span class="focus-input100-1"></span>
+            <span class="focus-input100-2"></span>
+          </div>
+
+          <div class="wrap-input100 rs1 validate-input" data-validate="Password confirmation is required">
+            <%= f.password_field :password_confirmation, autofocus: true, class: "input100", placeholder: "Password confirmation" %>
+            <span class="focus-input100-1"></span>
+            <span class="focus-input100-2"></span>
+          </div>
 
         <div class="wrap-input100 rs1 validate-input">
-          <%= f.date_field :birthday, class: "input100"%>
+          <%= f.password_field :current_password, autocomplete: "current-password", class: "input100", placeholder: "Current passoword" %>
           <span class="focus-input100-1"></span>
           <span class="focus-input100-2"></span>
         </div>
+        <div class="text-center"><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i></div>
 
-        <div class="wrap-input100 validate-input" data-validate="Password is required">
-          <%= f.password_field :password, autofocus: true, class: "input100", placeholder: "Password" %>
-          <span class="focus-input100-1"></span>
-          <span class="focus-input100-2"></span>
+        <div class="actions mt-4">
+          <%= f.submit "Update", class: "login100-form-btn" %>
         </div>
+      <% end %>
+      <div class="mt-2 text-center">
+        <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure to delete user?" }, method: :delete, class: 'btn btn-sm btn-danger' %>
 
-        <div class="wrap-input100 rs1 validate-input" data-validate="Password confirmation is required">
-          <%= f.password_field :password_confirmation, autofocus: true, class: "input100", placeholder: "Password confirmation" %>
-          <span class="focus-input100-1"></span>
-          <span class="focus-input100-2"></span>
-        </div>
-
-      <div class="field">
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-        <%= f.password_field :current_password, autocomplete: "current-password" %>
+        <%= link_to "Back", :back %>
       </div>
-
-      <div class="actions">
-        <%= f.submit "Update" %>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
