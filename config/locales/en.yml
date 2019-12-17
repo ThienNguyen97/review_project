@@ -133,6 +133,7 @@ en:
     delete: "Delete"
     post: "Post"
   label:
+    coin: "Coins"
     notifications: "Notifications"
     see_all: "See all"
     your_notifications: "Your notifications"

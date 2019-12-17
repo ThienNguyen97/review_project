@@ -80,6 +80,15 @@ class User < ApplicationRecord
     self.add_role(:moderator) if self.roles.blank?
   end
 
+  # def all_of_coins
+  #   all_of_coins = 0
+  #   posts.each do |post|
+  #     coins = post.num_of_coins
+  #     all_of_coins = all_of_coins + coins
+  #   end
+  #   user_coin = all_of_coins
+  # end
+
   private
 
   def downcase_email

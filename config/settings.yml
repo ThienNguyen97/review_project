@@ -26,3 +26,4 @@ truncate_length:
   post_title: 50
   post_content: 100
 page_number: 5
+min_of_like: 0

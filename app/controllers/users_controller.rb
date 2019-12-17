@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
   before_action :load_user, only: %i(show destroy following followers)
   before_action :correct_user, only: %i(edit update)
+  before_action :all_of_coins
   before_action :admin_user, only: :destroy
   # authorize_resource
 
@@ -81,5 +82,15 @@ class UsersController < ApplicationController
     return if @user
     flash[:danger] = t "flash.danger.user_not_found"
     redirect_to root_path
+  end
+
+  def all_of_coins
+    all_of_coins = 0
+    @user.posts.each do |post|
+      coins = post.num_of_coins
+      all_of_coins = all_of_coins + coins
+    end
+    @user.coin = all_of_coins
+    @user.save
   end
 end

@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_205401) do
     t.text "title"
     t.text "content"
     t.integer "status"
+    t.integer "coin"
     t.integer "user_id"
     t.integer "place_id"
     t.datetime "created_at", null: false
@@ -132,6 +133,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_205401) do
     t.float "balance"
     t.boolean "is_adv"
     t.boolean "is_admin"
+    t.string "coin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

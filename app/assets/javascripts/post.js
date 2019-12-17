@@ -46,6 +46,7 @@ $(document).on('click', '.likeBtn', function () {
       $(element).addClass('unlikeBtn');
       $(element).attr('like-id', e.like_id);
       $('.like').load(document.URL + ' .like');
+      $('.coin').load(document.URL + ' .coin');
     }
   });
 });
@@ -66,6 +67,7 @@ $(document).on('click', '.unlikeBtn', function () {
       $(element).removeClass('unlikeBtn');
       $(element).addClass('likeBtn');
       $('.like').load(document.URL + ' .like');
+      $('.coin').load(document.URL + ' .coin');
     }
   });
 });

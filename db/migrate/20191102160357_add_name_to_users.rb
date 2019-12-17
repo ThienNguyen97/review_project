@@ -6,5 +6,6 @@ class AddNameToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :balance, :float
     add_column :users, :is_adv, :boolean
     add_column :users, :is_admin, :boolean
+    add_column :users, :coin, :string
   end
 end

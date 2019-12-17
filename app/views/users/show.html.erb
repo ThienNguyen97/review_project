@@ -11,7 +11,9 @@
             <%= gravatar_for(@user) %>
             <br>
             <strong class="my-2"><%= link_to @user.name, @user %></strong>
-            <%= button_to "Edit Profile", edit_user_registration_path, 
+            <br>
+            <strong class="my-2"><%= link_to @user.coin + t("label.coin"), @user %></strong>
+            <%= button_to "Edit Profile", edit_user_registration_path,
                   :class => "btn btn-outline-primary my-2", :method => :get %>
             <hr>
             <section class="stats">

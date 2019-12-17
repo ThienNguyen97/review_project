@@ -27,6 +27,15 @@ class Post < ApplicationRecord
   POST_PARAMS = [:title, :content, :place_id,
   post_images_attributes: [:id, :post_id, :image]].freeze
 
+  def num_of_coins
+    if num_of_likes > Settings.min_of_like
+      num_of_coins = num_of_likes - Settings.min_of_like
+
+    else
+      num_of_coins = 0
+    end
+  end
+
   def num_of_likes
     reactions.where("reaction_type_id = ?", Settings.reaction_type.like).count
   end

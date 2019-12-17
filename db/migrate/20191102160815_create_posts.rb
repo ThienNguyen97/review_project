@@ -4,6 +4,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.text :title
       t.text :content
       t.integer :status
+      t.integer :coin
       t.references :user, foreign_key: true
       t.references :place, foreign_key: true
 

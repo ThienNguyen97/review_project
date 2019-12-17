@@ -38,6 +38,11 @@ class PostsController < ApplicationController
     params.require(:post).permit Post::POST_PARAMS
   end
 
+  # def coin_in_post
+  #   @post = current_user.posts.find_by id: params[:id]
+  #   if
+  # end
+
   def correct_user
     @post = current_user.posts.find_by id: params[:id]
     redirect_to root_url if @post.nil?
