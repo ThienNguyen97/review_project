@@ -7,6 +7,8 @@ class Ability
     can :read, Place
     can :read, Post
     can :show, User
+    can :following, User
+    can :followers, User
 
     if user.present?
       can :show, User, id: user.id
