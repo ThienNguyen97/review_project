@@ -3,62 +3,98 @@
 <div class="container">
   <div class="site-section" >
     <div class="row justify-content-center mb-5">
-      <div class="col-md-7 text-center border-primary">
+      <div class="col-md-9 text-center border-primary">
         <h2 class="font-weight-light text-primary"><%= t ".popular-places" %></h2>
+        <div class="row">
+          <% @places.each  do |place| %>
+            <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
+              <div class="listing-item">
+                <div class="listing-image">
+                  <% if place.place_images.first %>
+                    <%= image_tag(place.place_images.first.link, class: "img-fluid img-thumbnail popular_post_image w-100") %>
+                  <% end %>
+                </div>
+                <div class="listing-item-content">
+                  <%= link_to "#", class: "bookmark", data:{toggle: "tooltip", placement: "left"} do %>
+                    <span class="icon-heart"></span>
+                  <% end %>
+                  <h2 class="my-2">
+                    <%= link_to place.name, detail_index_path(name: place.name) %>
+                  </h2>
+                  <h5 class="address text-center">Address: <%= place.address %></h5>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="sidebar_widget">
+          <div class="single_sidebar_wiget">
+              <div class="single_catagory_post post_2 ">
+                  <div class="category_post_img">
+                      <%= image_tag('main/sidebar/sidebar_1.png') %>
+                  </div>
+                  <div class="post_text_1 pr_30">
+                      <a href="single-blog.html">
+                          <h3>ホーチミン博物館</h3>
+                      </a>
+                  </div>
+              </div>
+              <div class="single_catagory_post post_2 ">
+                  <div class="category_post_img">
+                      <%= image_tag('main/sidebar/sidebar_2.png') %>
+                  </div>
+                  <div class="post_text_1 pr_30">
+                      <a href="single-blog.html">
+                          <h3>美しい建物</h3>
+                      </a>
+                  </div>
+              </div>
+              <div class="single_catagory_post post_2">
+                  <div class="category_post_img">
+                      <%= image_tag('main/sidebar/sidebar_3.png') %>
+                  </div>
+                  <div class="post_text_1 pr_30">
+                      <a href="single-blog.html">
+                          <h3>ハノイの旗竿</h3>
+                      </a>
+                  </div>
+              </div>
+        </div>
       </div>
     </div>
 
     <div class="row">
-
-      <% @places.each  do |place| %>
-        <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
-          <div class="listing-item">
-            <div class="listing-image">
-              <% if place.place_images.first %>
-                <%= image_tag(place.place_images.first.link, class: "img-fluid img-thumbnail popular_post_image w-100") %>
-              <% end %>
-            </div>
-            <div class="listing-item-content">
-              <%= link_to "#", class: "bookmark", data:{toggle: "tooltip", placement: "left"} do %>
-                <span class="icon-heart"></span>
-              <% end %>
-              <h2 class="my-2">
-                <%= link_to place.name, detail_index_path(name: place.name) %>
-              </h2>
-              <h5 class="address text-center">Address: <%= place.address %></h5>
-            </div>
-          </div>
-        </div>
-      <% end %>
     </div>
   </div>
   <br><hr><br>
   <div class="site-section">
     <div class="row justify-content-center mb-5">
-      <div class="col-md-7 text-center border-primary">
+      <div class="col-md-8 text-center border-primary">
         <h2 class="font-weight-light text-primary"><%= t ".popular-posts" %></h2>
       </div>
-    </div>
-    <div class="row mb-3 align-items-stretch">
-      <% @posts.each do |post| %>
-      <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
-        <div class="h-entry">
-          <% if post.post_images.first %>
-            <%= image_tag(post.post_images.first.link.url, class: "img-fluid popular_post_image") %>
-          <% end %>
-          <div class="h-entry-inner">
-            <h2 class="font-size-regular">
-              <%= link_to truncate(post.title, length: 20), posts_show_path(id: post.id) %>
-            </h2>
-            <div class="meta mb-4"><%= t ".by" %>
-              <%= link_to post.user.name, user_path(post.user) %>
-              <span class="mx-2">&bullet;</span>
-              <%= t time_ago_in_words(post.created_at) %>
+      <div class="row mb-3 align-items-stretch">
+        <% @posts.each do |post| %>
+        <div class="col-md-6 col-lg-4 mb-4 mb-lg-4">
+          <div class="h-entry">
+            <% if post.post_images.first %>
+              <%= image_tag(post.post_images.first.link.url, class: "img-fluid popular_post_image") %>
+            <% end %>
+            <div class="h-entry-inner">
+              <h2 class="font-size-regular">
+                <%= link_to truncate(post.title, length: 20), posts_show_path(id: post.id) %>
+              </h2>
+              <div class="meta mb-4"><%= t ".by" %>
+                <%= link_to post.user.name, user_path(post.user) %>
+                <span class="mx-2">&bullet;</span>
+                <%= t time_ago_in_words(post.created_at) %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <% end %>
+        <% end %>
+     </div>
     </div>
   </div>
 </div>
