@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get "detail/index"
   get "search/index"
   get "posts/show"
-
+  get "payment", to: 'payment#index'
   # scope :admin do
   #   root "admin#index"
   #   get '/users', to: 'admin#users'

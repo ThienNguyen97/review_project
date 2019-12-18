@@ -16,5 +16,5 @@ Rails.application.config.assets.precompile += %w( ckeditor/*)
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w( user.js user.css )
 Rails.application.config.assets.precompile += %w( admin.js admin.css )
-
+Rails.application.config.assets.precompile += %w( payment.css )
 Rails.application.config.assets.precompile += %w( custom.js )
