@@ -16,7 +16,6 @@ class Post < ApplicationRecord
   scope :user_posts, ->(id){where(user_id: id)}
 
   validates :user_id, presence: true
-  validates :place_id, presence: true
   validates :title, presence: true
   validates :content, presence: true
 

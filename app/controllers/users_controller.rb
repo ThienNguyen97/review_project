@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_user!
   skip_before_action :authenticate_user!, only: :show
   before_action :load_user, only: %i(show destroy following followers)
   before_action :correct_user, only: %i(edit update)
   before_action :all_of_coins
   before_action :admin_user, only: :destroy
-  # authorize_resource
+
 
   def show
     @posts = @user.posts.create_desc.page(

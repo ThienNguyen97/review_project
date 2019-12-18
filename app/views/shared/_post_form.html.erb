@@ -1,11 +1,11 @@
 <%if user_signed_in? %>
   <div  class="card card-body up-post-card">
-  <%= form_for current_user.posts.build, html: {multipart: true} do |f| %>
+  <%= form_for current_user.posts.build do |f| %>
     <%= render "shared/error_messages", object: f.object %>
     <div class="row">
       <div class="col-sm-4">
         <%= label_tag :City, nil, class: "text-black" %>
-        <%= text_field_tag :city_name, nil, data: { autocomplete_source: cities_path},class: "form-control", required: true %>
+        <%= text_field_tag :city_name, nil, class: "form-control", required: true %>
         <div id = "err_city_name"></div>
       </div>
       <div class="col-sm-4">
@@ -15,7 +15,6 @@
         <div id = "err_place_name"></div>
       </div>
     </div>
-
     <div class="field">
       <%= f.label :Title, class: "text-black" %>
       <%= f.text_field :title, class: "form-control",id: "post_place_name", required: true  %>

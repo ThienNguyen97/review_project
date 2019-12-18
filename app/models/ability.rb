@@ -6,6 +6,7 @@ class Ability
   def initialize(user)
     can :read, Place
     can :read, Post
+    can :show, User
 
     if user.present?
       can :show, User, id: user.id
